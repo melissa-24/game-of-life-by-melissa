@@ -2,20 +2,31 @@ import React from 'react'
 
 import './App.css'
 
-const App = () => {
-  return (
-    <>
-     <header>
-       <h1>Conway's Game of Life - by Melissa</h1>
-       <nav>
-       </nav>
-     </header>
-     <div className='Game'>
-       {/* <Grid /> */}
-       {/* <Rules /> */}
-     </div>
-    </>
-  );
+import Grid from './components/Grid'
+import Rules from './components/Rules'
+import Controls from './components/Controls'
+
+class App extends React.Component {
+  render() {
+    return (
+      <>
+       <header>
+         <h1>HoneyBee's Game of Life</h1>
+         <nav>
+         </nav>
+       </header>
+       <div className='game'>
+        <div className='row'>
+          <Grid />
+          <Rules />
+        </div>
+        <div className="row">
+          <Controls />
+        </div>
+       </div>
+      </>
+    );
+  }
 };
 
 export default App;

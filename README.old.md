@@ -5,3 +5,7 @@ Melissa's version of Conway's Game of Life
 
 1. Hexagonal grid vs square
 2. Colors if hex grid =  yellow and black
+
+
+Flask for python in web
+pygame
