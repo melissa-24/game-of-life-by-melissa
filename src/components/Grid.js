@@ -17,7 +17,7 @@ class Grid extends React.Component {
         const config = configs[name];
         const generator = GridGenerator.getGenerator(config.map);
         const hexagons = generator.apply(this, config.mapProps);
-        this.setState({ hexagons, config });
+        this.setState({ hexagons, config, dead: !this.state.dead });
       }
       changeColor() {
           this.setState({dead: !this.state.dead})
@@ -27,7 +27,7 @@ class Grid extends React.Component {
         const { hexagons, config } = this.state;
         const layout = config.layout;
         const size = { x: layout.width, y: layout.height };
-        let toggle = this.state.dead ? "bgAlive" : "bgDead";
+        const toggle = this.state.dead ? "bgDead" : "bgAlive";
 
         return (
             <>
@@ -37,8 +37,8 @@ class Grid extends React.Component {
           <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
             {
               hexagons.map((hex, i) => (
-                <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s}>
-                    <Text className={toggle} onClick={this.changeColor.bind(this)} />
+                <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s} className={toggle} onClick={this.changeColor.bind(this)}>
+                    <Text  />
                 </Hexagon>
               ))
             }
