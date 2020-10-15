@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&family=Nothing+You+Could+Do&family=Satisfy&family=The+Girl+Next+Door&display=swap');
+
+// font-family: 'Caveat', cursive;
+
+// font-family: 'Dancing Script', cursive;
+
+// font-family: 'Nothing You Could Do', cursive;
+
+// font-family: 'Satisfy', cursive;
+
+// font-family: 'The Girl Next Door', cursive;
+
+body {
+    background-image: url('../images/bee.jpg');
+
+    #main {
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: center;
+        header {
+            display: flex;
+            flex-direction: row;
+            background-color: #dcb10db3;
+            padding: 1em;
+            border-radius: 20%;
+            h1 {
+                color: white;
+                font-family: 'Nothing You Could Do', cursive;
+                font-size: 3em;
+            }
+        }
+        .game {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .row {
+                display: flex;
+                flex-direction: row;
+                .grid {
+                    svg {
+                        g {
+                            fill: #332c0fb3;
+                            // &:hover {
+                            //     fill: #ddcb82b3;
+                            // }
+                            text {
+                                font-size: 1px;
+                            }
+                            .bgAlive {
+                                fill: #ddcb82b3;
+                            }
+                            .bgDead {
+                                fill: #332c0fb3;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }

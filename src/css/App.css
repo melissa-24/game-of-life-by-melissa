@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Caveat Regular'), local('Caveat-Regular'), url(https://fonts.gstatic.com/s/caveat/v8/Wnz6HAc5bAfYB2QLYQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/dancingscript/v15/If2cXTr6YS-zF4S-kcSWSVi_sxjsohD9F50Ruu7BMSoHTQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nothing You Could Do';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Nothing You Could Do'), local('NothingYouCouldDo'), url(https://fonts.gstatic.com/s/nothingyoucoulddo/v10/oY1B8fbBpaP5OX3DtrRYf_Q2BPB1SnfZb0OJ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Satisfy';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Satisfy Regular'), local('Satisfy-Regular'), url(https://fonts.gstatic.com/s/satisfy/v11/rP2Hp2yn6lkG50LoOZQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'The Girl Next Door';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('The Girl Next Door'), local('TheGirlNextDoor'), url(https://fonts.gstatic.com/s/thegirlnextdoor/v11/pe0zMJCIMIsBjFxqYBIcZ6_OI5oFHCYIVw.ttf) format('truetype');
+}
+body {
+  background-image: url('../images/bee.jpg');
+}
+body #main {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
+body #main header {
+  display: flex;
+  flex-direction: row;
+  background-color: #dcb10db3;
+  padding: 1em;
+  border-radius: 20%;
+}
+body #main header h1 {
+  color: white;
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 3em;
+}
+body #main .game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body #main .game .row {
+  display: flex;
+  flex-direction: row;
+}
+body #main .game .row .grid svg g {
+  fill: #332c0fb3;
+}
+body #main .game .row .grid svg g text {
+  font-size: 1px;
+}
+body #main .game .row .grid svg g .bgAlive {
+  fill: #ddcb82b3;
+}
+body #main .game .row .grid svg g .bgDead {
+  fill: #332c0fb3;
+}

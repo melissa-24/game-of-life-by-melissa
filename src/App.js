@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './App.css'
+import './css/App.css'
 
 import Grid from './components/Grid'
 import Rules from './components/Rules'
