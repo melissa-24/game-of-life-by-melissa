@@ -67,6 +67,9 @@ body #main .game .row {
 body #main .game .row .grid svg g {
   fill: #332c0fb3;
 }
+body #main .game .row .grid svg g:hover {
+  fill: #ddcb82b3;
+}
 body #main .game .row .grid svg g text {
   font-size: 1px;
 }
