@@ -19,8 +19,8 @@ class Grid extends React.Component {
         const hexagons = generator.apply(this, config.mapProps);
         this.setState({ hexagons, config, dead: !this.state.dead });
       }
-      changeColor() {
-          this.setState({dead: !this.state.dead})
+      changeColor(event) {
+        this.setState({dead: !this.state.dead})
       }
 
     render() {
@@ -32,18 +32,15 @@ class Grid extends React.Component {
         return (
             <>
             <p>Game Board Grid</p>
-            <div className="grid">
-            <HexGrid width={config.width} height={config.height}>
-          <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
-            {
-              hexagons.map((hex, i) => (
-                <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s} className={toggle} onClick={this.changeColor.bind(this)}>
-                    <Text  />
-                </Hexagon>
-              ))
-            }
-          </Layout>
-        </HexGrid>
+            <div className="the-grid">
+              <HexGrid width={config.width} height={config.height}>
+                <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
+                  { hexagons.map((hex, i) => (
+                      <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s} className={toggle} onClick={this.changeColor.bind(this)} />
+                    ))
+                  }
+                </Layout>
+              </HexGrid>
             </div>
             </>
         )
