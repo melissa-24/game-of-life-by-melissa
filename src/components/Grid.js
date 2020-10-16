@@ -10,6 +10,7 @@ class Grid extends React.Component {
         const generator = GridGenerator.getGenerator(config.map);
         const hexagons = generator.apply(this, config.mapProps);
         this.state = { hexagons, config, dead: true }; 
+        console.log(hexagons)
       }
     
       changeType(event) {
@@ -17,9 +18,9 @@ class Grid extends React.Component {
         const config = configs[name];
         const generator = GridGenerator.getGenerator(config.map);
         const hexagons = generator.apply(this, config.mapProps);
-        this.setState({ hexagons, config, dead: !this.state.dead });
+        // this.setState({ hexagons, config, dead: !this.state.dead });
       }
-      changeColor(event) {
+      changeColor() {
         this.setState({dead: !this.state.dead})
       }
 
@@ -36,7 +37,7 @@ class Grid extends React.Component {
               <HexGrid width={config.width} height={config.height}>
                 <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
                   { hexagons.map((hex, i) => (
-                      <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s} className={toggle} onClick={this.changeColor.bind(this)} />
+                      <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s} className={toggle} onClick={ this.changeColor.bind(this)} />
                     ))
                   }
                 </Layout>
