@@ -64,6 +64,10 @@ body #main .game .row {
   display: flex;
   flex-direction: row;
 }
+body #main .game .row p {
+  font-family: 'Caveat', cursive;
+  color: white;
+}
 body #main .game .row .the-grid svg g text {
   font-size: 1px;
 }
