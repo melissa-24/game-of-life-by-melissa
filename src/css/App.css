@@ -77,3 +77,9 @@ body #main .game .row .the-grid svg g .bgAlive {
 body #main .game .row .the-grid svg g .bgDead {
   fill: #332c0fb3;
 }
+body #main .game .row .the-grid svg g #bgAlive {
+  fill: #ddcbb3;
+}
+body #main .game .row .the-grid svg g #bgDead {
+  fill: #ddcbb3;
+}
