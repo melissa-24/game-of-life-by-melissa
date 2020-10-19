@@ -62,7 +62,9 @@ body #main .game {
 }
 body #main .game .row {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 body #main .game .row p {
   font-family: 'Caveat', cursive;
@@ -72,14 +74,9 @@ body #main .game .row .the-grid svg g text {
   font-size: 1px;
 }
 body #main .game .row .the-grid svg g .bgAlive {
-  fill: #ddcb82b3;
+  fill: #ddcb82;
+  background-image: url('../images/onebee.jpg');
 }
 body #main .game .row .the-grid svg g .bgDead {
   fill: #332c0fb3;
-}
-body #main .game .row .the-grid svg g #bgAlive {
-  fill: #ddcbb3;
-}
-body #main .game .row .the-grid svg g #bgDead {
-  fill: #ddcbb3;
 }
