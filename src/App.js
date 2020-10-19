@@ -7,6 +7,7 @@ import Rules from './components/Rules'
 import Controls from './components/Controls'
 
 class App extends React.Component {
+ 
   render() {
     return (
       <>

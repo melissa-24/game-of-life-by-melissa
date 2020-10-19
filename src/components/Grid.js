@@ -13,13 +13,6 @@ class Grid extends React.Component {
         console.log(hexagons)
       }
     
-      changeType(event) {
-        const name = event.currentTarget.value;
-        const config = configs[name];
-        const generator = GridGenerator.getGenerator(config.map);
-        const hexagons = generator.apply(this, config.mapProps);
-        // this.setState({ hexagons, config, dead: !this.state.dead });
-      }
       changeColor() {
         this.setState({dead: !this.state.dead})
       }
