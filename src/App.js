@@ -4,7 +4,6 @@ import './css/App.css'
 
 import Grid from './components/Grid'
 import Rules from './components/Rules'
-import Controls from './components/Controls'
 
 class App extends React.Component {
  
@@ -19,10 +18,10 @@ class App extends React.Component {
        <div className='game'>
         <div className='row'>
           <Grid />
-          <Rules />
         </div>
         <div className="row">
-          <Controls />
+        <Rules />
+         
         </div>
        </div>
       </>

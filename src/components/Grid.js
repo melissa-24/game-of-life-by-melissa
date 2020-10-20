@@ -40,7 +40,6 @@ class Grid extends React.Component {
 
         return (
             <>
-            <p>Game Board Grid</p>
             <div className="the-grid">
               <HexGrid width={config.width} height={config.height}>
                 <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
@@ -50,6 +49,13 @@ class Grid extends React.Component {
                   }
                 </Layout>
               </HexGrid>
+            </div>
+              <div className='controls'>
+              <div className='button'><span>Start</span></div>
+              <div className='button'><span>Pause</span></div>
+              <div className='button'><span>Next</span></div>
+              <div className='button'><span>Reset</span></div>
+              <div className='button'><span>Random Pattern</span></div>
             </div>
             </>
         )
