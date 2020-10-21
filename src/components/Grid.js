@@ -1,56 +1,187 @@
 import React from 'react'
-import { HexGrid, Layout, Hexagon, GridGenerator, HexUtils } from 'react-hexgrid';
-import configs from './config.json'
+
+const cellSize = 20;
+const w = 600;
+const h = 500;
 
 
-class Grid extends React.Component {
-    constructor(props) {
-        super(props);
-        const config = configs['rectangle'];
-        const generator = GridGenerator.getGenerator(config.map);
-        const hexagons = generator.apply(this, config.mapProps);
-        // this.state = { hexagons, config };
-        hexagons.forEach(hex => {
-          hex.classAlive = "bgDead";
-          hex.isAlive = false;
-        });
-        this.state = { hexagons, config, dead: true}
-        console.log(hexagons)
-      }
-    
-      changeColor(event, source) {
-        // this.setState({dead: !this.state.dead})
-        const { hexagons } = this.state;
-        var cells = hexagons.map(hex => {
-          if (HexUtils.equals(source.state.hex, hex)) {
-            hex.classAlive = hex.classAlive === "bgDead" ? "bgAlive" : "bgDead";
-            hex.isAlive = !hex.isAlive;
-          }
-          this.setState({ cells });
-          return cells;
-        })
-      }
+class Cell extends React.Component {
 
     render() {
-        const { hexagons, config } = this.state;
-        const layout = config.layout;
-        const size = { x: layout.width, y: layout.height };
-        // let toggle = this.state.dead ? "bgAlive" : "bgDead";
+        const { x, y } = this.props;
+        return (
+            <div className="the-cell" style={{
+                left: `${cellSize * x + 1}px`,
+                top: `${cellSize * y + 1}px`,
+                width: `${cellSize - 1}px`,
+                height: `${cellSize - 1}px`,
+            }} />
+        );
+    }
+}
+class Grid extends React.Component {
 
+    constructor() {
+        super();
+        this.rows = h / cellSize;
+        this.cols = w / cellSize;
+        this.grid = this.makeEmptyGrid();
+    }
+
+    state = {
+        cells: [],
+        isRunning: false,
+        interval: 100,
+    }
+
+    makeEmptyGrid() {
+        let grid = [];
+        for (let y = 0; y < this.rows; y++) {
+            grid[y] = [];
+            for (let x = 0; x < this.cols; x++) {
+                grid[y][x] = false;
+            }
+        }
+        return grid;
+    }
+
+    getElementOffset() {
+        const rect = this.gridRef.getBoundingClientRect();
+        const doc = document.documentElement;
+        return {
+            x: (rect.left + window.pageXOffset) - doc.clientLeft,
+            y: (rect.top + window.pageYOffset) - doc.clientTop,
+        };
+    }
+
+    makeCells() {
+        let cells = [];
+        for (let y = 0; y < this.rows; y++) {
+            for (let x = 0; x < this.cols; x++) {
+                if (this.grid[y][x]) {
+                    cells.push({ x, y });
+                }
+            }
+        }
+        return cells;
+    }
+
+    handleClick = (event) => {
+        const elemOffset = this.getElementOffset();
+        const offsetX = event.clientX - elemOffset.x;
+        const offsetY = event.clientY - elemOffset.y;
+        const x = Math.floor(offsetX / cellSize);
+        const y = Math.floor(offsetY / cellSize);
+        if (x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
+            this.grid[y][x] = !this.grid[y][x];
+        }
+        this.setState({ cells: this.makeCells() });
+    }
+
+    runGame = () => {
+        this.setState({ isRunning: true });
+        this.runIteration();
+    }
+
+    stopGame = () => {
+        this.setState({ isRunning: false });
+        if (this.timeoutHandler) {
+            window.clearTimeout(this.timeoutHandler);
+            this.timeoutHandler = null;
+        }
+    }
+
+    runIteration() {
+        let newGrid = this.makeEmptyGrid();
+        for (let y = 0; y < this.rows; y++) {
+            for (let x = 0; x < this.cols; x++) {
+                let neighbors = this.calculateNeighbors(this.grid, x, y);
+                if (this.grid[y][x]) {
+                    if (neighbors === 2 || neighbors === 3) {
+                        newGrid[y][x] = true;
+                    } else {
+                        newGrid[y][x] = false;
+                    }
+                } else {
+                    if (!this.grid[y][x] && neighbors === 3) {
+                        newGrid[y][x] = true;
+                    }
+                }
+            }
+        }
+        this.grid = newGrid;
+        this.setState({ cells: this.makeCells() });
+        this.timeoutHandler = window.setTimeout(() => {
+            this.runIteration();
+        }, this.state.interval);
+    }
+    
+    calculateNeighbors(grid, x, y) {
+        let neighbors = 0;
+        const dirs = [[-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1]];
+        for (let i = 0; i < dirs.length; i++) {
+            const dir = dirs[i];
+            let y1 = y + dir[0];
+            let x1 = x + dir[1];
+            if (x1 >= 0 && x1 < this.cols && y1 >= 0 && y1 < this.rows && grid[y1][x1]) {
+                neighbors++;
+            }
+        }
+        return neighbors;
+    }
+
+    handleIntervalChange = (event) => {
+        this.setState({ interval: event.target.value });
+    }
+
+    handleClear = () => {
+        this.grid = this.makeEmptyGrid();
+        this.setState({ cells: this.makeCells() });
+    }
+
+    handleRandom = () => {
+        for (let y = 0; y < this.rows; y++) {
+            for (let x = 0; x < this.cols; x++) {
+                this.grid[y][x] = (Math.random() >= 0.5);
+            }
+        }
+        this.setState({ cells: this.makeCells() });
+    }
+
+
+    render() {
+        const { cells, interval, isRunning } = this.state;
 
         return (
             <>
-            <p>Game Board Grid</p>
-            <div className="the-grid">
-              <HexGrid width={config.width} height={config.height}>
-                <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
-                  { hexagons.map((hex, i) => (
-                      <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s} className={ this.state.hexagons[i].classAlive } onClick={(e, h) => this.changeColor(e, h)} />
-                    ))
-                  }
-                </Layout>
-              </HexGrid>
-            </div>
+            <div className="the-grid"
+                    style={{
+                        width: w,
+                        height: h,
+                        backgroundSize: `${cellSize}px ${cellSize}px`
+                    }}
+                    onClick={this.handleClick}
+                    ref={(n) => { this.gridRef = n; }}>
+
+                    {cells.map(cell => (
+                        <Cell
+                            x={cell.x}
+                            y={cell.y}
+                            key={`${cell.x},${cell.y}`}/>
+                    ))}
+                </div>
+
+                <div className="the-controls">
+                    <p>Update every</p>
+                    <input value={this.state.interval} onChange={this.handleIntervalChange} />
+                    <p>msec</p>
+                    {isRunning ?
+                        <button className="button" onClick={this.stopGame}>Stop</button> :
+                        <button className="button" onClick={this.runGame}>Run</button>
+                    }
+                    <button className="button" onClick={this.handleRandom}>Random</button>
+                    <button className="button" onClick={this.handleClear}>Clear</button>
+                </div>
             </>
         )
     }

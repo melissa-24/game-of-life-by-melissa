@@ -44,9 +44,11 @@ body #main {
 }
 body #main header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #dcb10db3;
-  padding: 1em;
+  padding: 0.2em;
   border-radius: 20%;
 }
 body #main header h1 {
@@ -54,29 +56,135 @@ body #main header h1 {
   font-family: 'Nothing You Could Do', cursive;
   font-size: 3em;
 }
+body #main header nav a {
+  padding: 0.5em;
+  font-family: 'Nothing You Could Do', cursive;
+  color: white;
+  font-size: 1.5em;
+}
 body #main .game {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2em;
+}
+body #main .game .the-grid {
+  position: relative;
+  margin: 0 auto;
+  background-color: #332c0fb3;
+  background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px);
+}
+body #main .game .the-grid .the-cell {
+  background: #ddcb82;
+  position: absolute;
+}
+body #main .game .the-controls {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0.2em;
 }
-body #main .game .row {
+body #main .game .the-controls p {
+  font-family: 'Satisfy', cursive;
+  font-size: 1.5em;
+}
+body #main .game .the-controls .button {
+  cursor: pointer;
+  background-color: #dcb10d;
+  font-family: 'Satisfy', cursive;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.4em;
+  margin: 0.2em;
+  border: 1px solid #332c0f;
+  box-shadow: #332c0f;
+}
+body #main .game .grid {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-body #main .game .row p {
-  font-family: 'Caveat', cursive;
-  color: white;
+body #main .game .grid h2 {
+  font-family: 'The Girl Next Door', cursive;
+  color: #332c0f;
+  font-size: 2em;
+  background-image: url('../images/bg.jpg');
+  border-radius: 20%;
 }
-body #main .game .row .the-grid svg g text {
+body #main .game .grid svg g text {
   font-size: 1px;
 }
-body #main .game .row .the-grid svg g .bgAlive {
+body #main .game .grid svg g .bgAlive {
   fill: #ddcb82;
-  background-image: url('../images/onebee.jpg');
 }
-body #main .game .row .the-grid svg g .bgDead {
+body #main .game .grid svg g .bgDead {
   fill: #332c0fb3;
+}
+body #main .game .controls {
+  font-family: 'Caveat', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
+}
+body #main .game .controls .button {
+  position: relative;
+  width: 75px;
+  height: 43.3px;
+  background-color: #dcb10d;
+  margin: 21.65px 0;
+  border-left: solid 3px #dccb82;
+  border-right: solid 3px #dccb82;
+}
+body #main .game .controls .button:before,
+body #main .game .controls .button:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 53.03px;
+  height: 53.03px;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 7.9835px;
+}
+body #main .game .controls .button:before {
+  top: -26.5165px;
+  border-top: solid 4.2426px #dccb82;
+  border-right: solid 4.2426px #dccb82;
+}
+body #main .game .controls .button:after {
+  bottom: -26.5165px;
+  border-bottom: solid 4.2426px #dccb82;
+  border-left: solid 4.2426px #dccb82;
+}
+body #main .game .controls .button span {
+  display: block;
+  position: absolute;
+  top: 1.73205081px;
+  left: 0;
+  width: 69px;
+  height: 39.8372px;
+  z-index: 2;
+  background: inherit;
+  text-align: center;
+}
+body #main .game .about {
+  background-image: url('../images/bg.jpg');
+}
+body #main .game .about h2 {
+  font-family: 'The Girl Next Door', cursive;
+  color: #332c0f;
+}
+body #main .game .rules {
+  background-image: url('../images/bg.jpg');
+}
+body #main .game .rules h2 {
+  font-family: 'The Girl Next Door', cursive;
+  color: #332c0f;
 }

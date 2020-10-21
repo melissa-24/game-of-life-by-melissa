@@ -1,0 +1,16 @@
+function to handle Generations
+
+function to start game
+
+function to pause game
+
+function to reset game
+if className === bgAlive
+return className bgDead
+
+function to test logic
+
+
+if bgAlive && neighbors <2 || >3 then bgAlive = false
+if bgAlive && neighbors bgAlive === 3 then bgAlive = true
+if bgDead && neighbors bgAlive === 3 then bgAlive = true
