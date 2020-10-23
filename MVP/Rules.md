@@ -121,11 +121,11 @@ Write an algorithm that:
 Implement at least 3 of the following features:
 
 * Create a few sample cell configurations that users can load and run
-* Add an option that creates a random cell configuration that users can
+* Did this * Add an option that creates a random cell configuration that users can
   run
 * Add additional cell properties, like color or size, and incorporate
   them into your visualization
-* Allow users to specify the speed of the simulation
+* Did this * Allow users to specify the speed of the simulation
 * Provide functionality to manually step through the simulation one
   generation at a time, as opposed to animating automatically
 * Allow users to change the dimension of the grid being displayed
