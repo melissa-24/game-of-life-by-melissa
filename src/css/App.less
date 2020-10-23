@@ -37,6 +37,10 @@ body {
                     font-family: 'Nothing You Could Do', cursive;
                     color: white;
                     font-size: 1.5em;
+                    &:hover {
+                        font-size: 2em;
+                        color: #6b1c64;
+                    }
                 }
             }
         }
@@ -48,7 +52,31 @@ body {
             margin: .2em;
             .the-grid {
                 position: relative;
-                margin: 0 auto;
+                margin: 1em;
+                background-color: #332c0fb3;
+                background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px);
+
+                .the-cell {
+                    background: #ddcb82;
+                    position: absolute;
+                }
+            }
+            .the-grid25x25Colors {
+                position: relative;
+                margin: 1em;
+                background-color: #072e2e;
+                background-image: linear-gradient(#294e4eb3 1px, transparent 1px), linear-gradient(90deg, #294e4eb3 1px, transparent 1px);
+
+                .the-cell {
+                    // background: #6b1c64;
+                    background: #8e96bf;
+                    background: radial-gradient(circle, #8e96bf 0%, #6b1c64 100%);
+                    position: absolute;
+                }
+            }
+            .the-grid40x25 {
+                position: relative;
+                margin: 1em;
                 background-color: #332c0fb3;
                 background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px);
 
@@ -68,6 +96,9 @@ body {
                 p {
                     font-family: 'Satisfy', cursive;
                     font-size: 1.5em;
+                    color: #332c0f;
+                    text-align: center;
+                    background-image: url('../images/bg.jpg');
                 }
 
                 .button {
@@ -161,18 +192,70 @@ body {
                     }
                 }
             }
-            .about {
-                background-image: url('../images/bg.jpg');
-                h2 {
-                    font-family: 'The Girl Next Door', cursive;
-                    color: #332c0f;
+            .home {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .about {
+                    background-image: url('../images/bg.jpg');
+                    h2,
+                    p {
+                        font-family: 'The Girl Next Door', cursive;
+                        color: #332c0f;
+                        text-align: center;
+                    }
+                    h2 {
+                        font-size: 2.2em;
+                    }
+                    p {
+                        font-size: 1.4em;
+                    }
                 }
-            }
-            .rules {
-                background-image: url('../images/bg.jpg');
-                h2 {
-                    font-family: 'The Girl Next Door', cursive;
-                    color: #332c0f;
+                .choices {
+                    background-image: url('../images/bg.jpg');
+                    h2,
+                    h3 {
+                        font-family: 'The Girl Next Door', cursive;
+                        color: #332c0f;
+                        text-align: center;
+                    }
+                    h2 {
+                        font-size: 2.2em;
+                    }
+                    h3 {
+                        font-size: 1.8em;
+                    }
+                    nav {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        a {
+                            font-family: 'The Girl Next Door', cursive;
+                            padding: 1em;
+                            font-size: 1.4em;
+                            color: #332c0f;
+                            &:hover {
+                                font-size: 2em;
+                                color: #6b1c64;
+                            }
+    
+                        }
+                    }
+                }
+                .rules {
+                    background-image: url('../images/bg.jpg');
+                    h2 {
+                        font-family: 'The Girl Next Door', cursive;
+                        color: #332c0f;
+                        text-align: center;
+                    }
+                    ul {
+                        font-family: 'The Girl Next Dorr', cursive;
+                        color: #332c0f;
+                    }
                 }
             }
         }

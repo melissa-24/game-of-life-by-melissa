@@ -1,7 +1,7 @@
 import React from 'react'
 import { HexGrid, Layout, Hexagon, GridGenerator, HexUtils } from 'react-hexgrid';
 import configs from './config.json'
-import Controls from './Controls'
+import Controls from '../Controls'
 
 
 class Grid extends React.Component {

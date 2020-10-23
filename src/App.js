@@ -3,8 +3,10 @@ import { Route, Link, Switch } from 'react-router-dom'
 
 import './css/App.css'
 
-import Grid from './components/Grid'
-import AltGrid from './components/AltGrid'
+import Grid25x25 from './components/grids/Grid25x25'
+import Grid25x25Colors from './components/grids/Grid25x25Colors'
+import Grid40x25 from './components/grids/Grid40x25'
+import HexGrid from './components/grids/HexGrid'
 import Rules from './components/Rules'
 
 class App extends React.Component {
@@ -15,15 +17,15 @@ class App extends React.Component {
        <header>
          <h1>HoneyBee's Game of Life</h1>
          <nav>
-           <Link to='/traditional'>Traditional Grid</Link>
-           <Link to='/hexagon'>Hexagonal Grid</Link>
            <Link to='/'>Home</Link>
          </nav>
        </header>
        <div className='game'>
          <Switch>
-           <Route path='/traditional' component={Grid} />
-           <Route path='/hexagon' component={AltGrid} />
+           <Route path='/version1' component={Grid25x25} />
+           <Route path='/version2' component={Grid25x25Colors} />
+           <Route path='/version3' component={Grid40x25} />
+           <Route path='/version4' component={HexGrid} />
            <Route exact path='/' component={Rules} />
          </Switch>
         {/* <div className='row'>

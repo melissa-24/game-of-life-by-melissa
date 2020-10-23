@@ -1,7 +1,7 @@
 import React from 'react'
 
 const cellSize = 20;
-const w = 600;
+const w = 800;
 const h = 500;
 
 
@@ -154,7 +154,7 @@ class Grid extends React.Component {
 
         return (
             <>
-            <div className="the-grid"
+            <div className="the-grid40x25"
                     style={{
                         width: w,
                         height: h,
