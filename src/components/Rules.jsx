@@ -12,6 +12,8 @@ const Rules = () => {
                     <Link to='/version2'>25 X 25 Grid With Colors</Link>
                     <Link to='/version3'>40 x 25 Grid</Link>
                     <Link to='/version4'>Hexagonal Grid ** Under Construction</Link>
+                    {/* <Link to='/version5'>New Hex</Link> */}
+                    <a href='./grids/newHexGrid.html'>New Hex</a>
                 </nav>
             </div>
             <div className='about'>
